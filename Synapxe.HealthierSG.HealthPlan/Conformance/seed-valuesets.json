@@ -209,6 +209,402 @@
           ]
         }
       }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-action-plan-category",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-action-plan-category",
+        "url": "https://synapxe.sg/ValueSet/hsg-action-plan-category",
+        "version": "0.1.0",
+        "name": "hsg-action-plan-category",
+        "title": "hsg-action-plan-category",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Action Plan",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-action-plan-category",
+              "concept": [
+                {
+                  "code": "AP1",
+                  "display": "Diet"
+                },
+                {
+                  "code": "AP2",
+                  "display": "Vaccination"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-action-plan-diet-item",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-action-plan-diet-item",
+        "url": "https://synapxe.sg/ValueSet/hsg-action-plan-diet-item",
+        "version": "0.1.0",
+        "name": "hsg-action-plan-diet-item",
+        "title": "hsg-action-plan-diet-item",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Action Plan Diet Item",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-action-plan-diet-item",
+              "concept": [
+                {
+                  "code": "DI001",
+                  "display": "Limit sodium intake"
+                },
+                {
+                  "code": "DI002",
+                  "display": "Limit sugar intake"
+                },
+                {
+                  "code": "DI003",
+                  "display": "Limit saturated fat intake"
+                },
+                {
+                  "code": "DI004",
+                  "display": "Control carbohydrate intake"
+                },
+                {
+                  "code": "DI005",
+                  "display": "Control calorie intake"
+                },
+                {
+                  "code": "DI006",
+                  "display": "Have sufficient fibre intake"
+                },
+                {
+                  "code": "DI007",
+                  "display": "Have sufficient protein intake"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-condition-category",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-condition-category",
+        "url": "https://synapxe.sg/ValueSet/hsg-condition-category",
+        "version": "0.1.0",
+        "name": "hsg-condition-category",
+        "title": "hsg-condition-category",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Condition Category",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-condition-category",
+              "concept": [
+                {
+                  "code": "patient-condition-tag",
+                  "display": "Patient Condition Tag"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-healthplan-activity-type",
+        "url": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+        "version": "0.1.0",
+        "name": "hsg-healthplan-activity-type",
+        "title": "hsg-healthplan-activity-type",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Health Plan Activity Type",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+              "concept": [
+                {
+                  "code": "recommended-next-check-in",
+                  "display": "Recommended Next Check-in"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-care-plan-category",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-care-plan-category",
+        "url": "https://synapxe.sg/ValueSet/hsg-care-plan-category",
+        "version": "0.1.0",
+        "name": "hsg-care-plan-category",
+        "title": "hsg-care-plan-category",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Care Plan Category",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-care-plan-category",
+              "concept": [
+                {
+                  "code": "pophealth-enrolment",
+                  "display": "Pophealth Enrolment"
+                },
+                {
+                  "code": "pophealth-plan",
+                  "display": "Pophealth Plan"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-condition-tag",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-condition-tag",
+        "url": "https://synapxe.sg/ValueSet/hsg-condition-tag",
+        "version": "0.1.0",
+        "name": "hsg-condition-tag",
+        "title": "hsg-condition-tag",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Patient Condition Tag",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-condition-tag",
+              "concept": [
+                {
+                  "code": "DM",
+                  "display": "Diabetes Mellitus"
+                },
+                {
+                  "code": "HP",
+                  "display": "Hyperlipidemia (Lipid Disorders)"
+                },
+                {
+                  "code": "HT",
+                  "display": "Hypertension"
+                },
+                {
+                  "code": "PDM",
+                  "display": "Pre-diabetes"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-action-plan-vaccination-item",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-action-plan-vaccination-item",
+        "url": "https://synapxe.sg/ValueSet/hsg-action-plan-vaccination-item",
+        "version": "0.1.0",
+        "name": "hsg-action-plan-vaccination-item",
+        "title": "hsg-action-plan-vaccination-item",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Action Plan Vaccination item",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-action-plan-vaccination-item",
+              "concept": [
+                {
+                  "code": "A-INF",
+                  "display": "Influenza (INF)"
+                },
+                {
+                  "code": "A-PNC",
+                  "display": "Pneumococcal conjugate vaccine (PCV)"
+                },
+                {
+                  "code": "A-PPSV",
+                  "display": "Pneumococcal polysaccharide (PPSV23)"
+                },
+                {
+                  "code": "A-Tdap",
+                  "display": "Tetanus, reduced diphtheria & acellular pertussis (Tdap)"
+                },
+                {
+                  "code": "A-HPV",
+                  "display": "Human papillomavirus (HPV2 or HPV4)"
+                },
+                {
+                  "code": "A-HEPB",
+                  "display": "Hepatitis B (HepB)"
+                },
+                {
+                  "code": "A-MMR",
+                  "display": "Measles, mumps & rubella (MMR)"
+                },
+                {
+                  "code": "A-CPOX",
+                  "display": "Varicella (VAR)"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-health-plan-note-type",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-health-plan-note-type",
+        "url": "https://synapxe.sg/ValueSet/hsg-health-plan-note-type",
+        "version": "0.1.0",
+        "name": "hsg-health-plan-note-type",
+        "title": "hsg-health-plan-note-type",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Health Plan Note Type",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-health-plan-note-type",
+              "concept": [
+                {
+                  "code": "health-plan-discussion-note",
+                  "display": "Record of Discussion"
+                },
+                {
+                  "code": "health-plan-one-thing-to-start",
+                  "display": "One Thing To Start Working On Today"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/unitsofmeasure.org",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "unitsofmeasure.org",
+        "url": "/ValueSet/unitsofmeasure.org",
+        "version": "0.1.0",
+        "name": "unitsofmeasure.org",
+        "title": "unitsofmeasure.org",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "UCUM",
+        "compose": {
+          "include": [
+            {
+              "system": "http://unitsofmeasure.org",
+              "concept": [
+                {
+                  "code": "mg/dL",
+                  "display": "mg/dL"
+                },
+                {
+                  "code": "mmol/L",
+                  "display": "mmol/L"
+                },
+                {
+                  "code": "d",
+                  "display": "Day"
+                },
+                {
+                  "code": "wk",
+                  "display": "Week"
+                },
+                {
+                  "code": "mo",
+                  "display": "Month"
+                },
+                {
+                  "code": "kg",
+                  "display": "kg"
+                },
+                {
+                  "code": "mm[Hg]",
+                  "display": "mm[Hg]"
+                },
+                {
+                  "code": "%",
+                  "display": "%"
+                },
+                {
+                  "code": "m",
+                  "display": "m"
+                },
+                {
+                  "code": "kg/m2",
+                  "display": "kg/m2"
+                },
+                {
+                  "code": "cm",
+                  "display": "cm"
+                },
+                {
+                  "code": "μmol/L",
+                  "display": "μmol/L"
+                },
+                {
+                  "code": "ml/min/1.73m2",
+                  "display": "ml/min/1.73m2"
+                },
+                {
+                  "code": "mg/mmol",
+                  "display": "mg/mmol"
+                },
+                {
+                  "code": "{steps}/d",
+                  "display": "step(s) per day"
+                },
+                {
+                  "code": "min",
+                  "display": "mintue(s)"
+                },
+                {
+                  "code": "{days}/wk",
+                  "display": "day(s) per week"
+                },
+                {
+                  "code": "{sticks}/d",
+                  "display": "stick(s) per day"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }

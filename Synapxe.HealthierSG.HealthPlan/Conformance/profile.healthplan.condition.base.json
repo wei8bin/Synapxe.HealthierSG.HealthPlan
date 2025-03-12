@@ -1,0 +1,64 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/StructureDefinition/putHealthplanCondition",
+  "name": "putHealthplanCondition",
+  "status": "active",
+  "fhirVersion": "4.3.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition.id",
+        "path": "Condition.id",
+        "min": 1
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Condition.category.coding",
+        "path": "Condition.category.coding",
+        "min": 1
+      },
+      {
+        "id": "Condition.category.coding.system",
+        "path": "Condition.category.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-condition-category"
+      },
+      {
+        "id": "Condition.category.coding.code",
+        "path": "Condition.category.coding.code",
+        "min": 1
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "min": 1
+      },
+      {
+        "id": "Condition.code.coding",
+        "path": "Condition.code.coding",
+        "min": 1
+      },
+      {
+        "id": "Condition.code.coding.system",
+        "path": "Condition.code.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-condition-tag"
+      },
+      {
+        "id": "Condition.code.coding.code",
+        "path": "Condition.code.coding.code",
+        "min": 1
+      }
+    ]
+  }
+}

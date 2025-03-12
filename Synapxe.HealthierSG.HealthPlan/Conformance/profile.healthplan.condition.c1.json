@@ -1,0 +1,33 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/profile/C1",
+  "name": "patient-condition-tag",
+  "status": "active",
+  "fhirVersion": "4.3.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Condition",
+  "baseDefinition": "https://synapxe.sg/StructureDefinition/putHealthplanCondition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition.category.coding",
+        "path": "Condition.category.coding",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-condition-category"
+        }
+      },
+      {
+        "id": "Condition.code.coding",
+        "path": "Condition.code.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-condition-tag"
+        }
+      }
+    ]
+  }
+}

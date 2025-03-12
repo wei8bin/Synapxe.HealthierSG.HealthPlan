@@ -1,8 +1,8 @@
 {
   "resourceType": "StructureDefinition",
   "url": "https://synapxe.sg/StructureDefinition/CarePlan-healthplan",
-  "name": "CarePlan_HealthPlan",
-  "status": "draft",
+  "name": "HSARHealthPlan",
+  "status": "active",
   "fhirVersion": "4.3.0",
   "kind": "resource",
   "abstract": false,
@@ -12,50 +12,122 @@
   "differential": {
     "element": [
       {
-        "id": "CarePlan.id",
-        "path": "CarePlan.id",
-        "max": "0"
+        "id": "CarePlan",
+        "path": "CarePlan",
+        "constraint": [
+          {
+            "key": "healthplan-goal-gm002-dueDate",
+            "severity": "error",
+            "human": "GM002 dueDate must be greater than period.start",
+            "expression": "contained.exists().not() or contained.where(description.coding.where(code = 'G2')).exists().not() or contained.where(description.coding.where(code = 'G2')).target.exists().not() or contained.where(description.coding.where(code = 'G2')).target.where(measure.coding.where(code='GM002')).due.exists().not() or contained.where(description.coding.where(code = 'G2')).target.where(measure.coding.where(code='GM002')).due>period.start"
+          },
+          {
+            "key": "healthplan-goal-gm010-dueDate",
+            "severity": "error",
+            "human": "GM010 dueDate must be greater than period.start",
+            "expression": "contained.exists().not() or contained.where(description.coding.where(code = 'G2')).exists().not() or contained.where(description.coding.where(code = 'G2')).target.exists().not() or contained.where(description.coding.where(code = 'G2')).target.where(measure.coding.where(code='GM010')).due.exists().not() or contained.where(description.coding.where(code = 'G2')).target.where(measure.coding.where(code='GM010')).due>period.start"
+          },
+          {
+            "key": "healthplan-activity-recommended-scheduled",
+            "severity": "error",
+            "human": "Year of recommended-next-check-in must be greater than or equal to year of period.start",
+            "expression": "activity.detail.where(code.coding.where(code='recommended-next-check-in')).scheduled.event.toString().substring(0, 4)>=period.start.toString().substring(0, 4)"
+          },
+          {
+            "key": "healthplan-activity-vaccination-INF-constraint",
+            "severity": "error",
+            "human": "if vaccination 'A-INF' exists, then either scheduledtiming or duedate extension must be present.",
+            "expression": "activity.detail.where(code.coding.where(code = 'A-INF').exists()).all(scheduled.exists() or extension.where(url = 'https://synapxe.sg/extension/dueDate').exists())"
+          },
+          {
+            "key": "healthplan-activity-vaccination-dueDate-scheduled-constraint",
+            "severity": "error",
+            "human": "If code is not A-INF, then dueDate is mandatory and scheduledTiming should not be present.",
+            "expression": "activity.detail.where(code.coding.where(system = 'https://synapxe.sg/ValueSet/hsg-action-plan-vaccination-item' and code != 'A-INF').exists()).all(extension.where(url = 'https://synapxe.sg/extension/dueDate').exists() and scheduled.empty())"
+          }
+        ]
       },
       {
-        "id": "CarePlan.implicitRules",
-        "path": "CarePlan.implicitRules",
-        "max": "0"
+        "id": "CarePlan.status",
+        "path": "CarePlan.status",
+        "fixedCode": "active"
       },
       {
-        "id": "CarePlan.language",
-        "path": "CarePlan.language",
-        "max": "0"
+        "id": "CarePlan.intent",
+        "path": "CarePlan.intent",
+        "fixedCode": "plan"
       },
       {
-        "id": "CarePlan.text",
-        "path": "CarePlan.text",
-        "max": "0"
+        "id": "CarePlan.category",
+        "path": "CarePlan.category",
+        "min": 1,
+        "max": "1"
       },
       {
-        "id": "CarePlan.contained",
-        "path": "CarePlan.contained",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "type",
-              "path": "$this"
-            }
-          ],
-          "rules": "open"
+        "id": "CarePlan.category.coding",
+        "path": "CarePlan.category.coding",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-care-plan-category"
         }
       },
       {
-        "id": "CarePlan.contained:goal",
-        "path": "CarePlan.contained",
-        "sliceName": "goal",
+        "id": "CarePlan.category.coding.system",
+        "path": "CarePlan.category.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-care-plan-category"
+      },
+      {
+        "id": "CarePlan.category.coding.code",
+        "path": "CarePlan.category.coding.code",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.subject",
+        "path": "CarePlan.subject",
         "type": [
           {
-            "code": "Goal",
-            "profile": [
-              "https://synapxe.sg/StructureDefinition/HealthPlanGoal"
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
           }
         ]
+      },
+      {
+        "id": "CarePlan.subject.type",
+        "path": "CarePlan.subject.type",
+        "min": 1,
+        "fixedUri": "Patient"
+      },
+      {
+        "id": "CarePlan.subject.identifier",
+        "path": "CarePlan.subject.identifier",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.subject.identifier.system",
+        "path": "CarePlan.subject.identifier.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/identifier/nric"
+      },
+      {
+        "id": "CarePlan.subject.identifier.value",
+        "path": "CarePlan.subject.identifier.value",
+        "min": 1,
+        "constraint": [
+          {
+            "key": "healthplan-patient",
+            "severity": "error",
+            "human": "Patient identifier value should not be empty",
+            "expression": "$this.length() > 0"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.period",
+        "path": "CarePlan.period",
+        "min": 1
       },
       {
         "id": "CarePlan.author",
@@ -71,21 +143,6 @@
         ]
       },
       {
-        "id": "CarePlan.author.id",
-        "path": "CarePlan.author.id",
-        "max": "0"
-      },
-      {
-        "id": "CarePlan.author.extension",
-        "path": "CarePlan.author.extension",
-        "max": "0"
-      },
-      {
-        "id": "CarePlan.author.reference",
-        "path": "CarePlan.author.reference",
-        "max": "0"
-      },
-      {
         "id": "CarePlan.author.type",
         "path": "CarePlan.author.type",
         "min": 1,
@@ -95,26 +152,6 @@
         "id": "CarePlan.author.identifier",
         "path": "CarePlan.author.identifier",
         "min": 1
-      },
-      {
-        "id": "CarePlan.author.identifier.id",
-        "path": "CarePlan.author.identifier.id",
-        "max": "0"
-      },
-      {
-        "id": "CarePlan.author.identifier.extension",
-        "path": "CarePlan.author.identifier.extension",
-        "max": "0"
-      },
-      {
-        "id": "CarePlan.author.identifier.use",
-        "path": "CarePlan.author.identifier.use",
-        "max": "0"
-      },
-      {
-        "id": "CarePlan.author.identifier.type",
-        "path": "CarePlan.author.identifier.type",
-        "max": "0"
       },
       {
         "id": "CarePlan.author.identifier.system",
@@ -130,25 +167,381 @@
           {
             "key": "healthplan-organization",
             "severity": "error",
-            "human": "author identifier value should not be empty",
+            "human": "Author identifier value should not be empty",
             "expression": "$this.length() > 0"
           }
         ]
       },
+      
       {
-        "id": "CarePlan.author.identifier.period",
-        "path": "CarePlan.author.identifier.period",
-        "max": "0"
+        "id": "CarePlan.activity",
+        "path": "CarePlan.activity",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "detail.code.coding.system"
+            }
+          ],
+          "rules": "open"
+        }
       },
       {
-        "id": "CarePlan.author.identifier.assigner",
-        "path": "CarePlan.author.identifier.assigner",
-        "max": "0"
+        "id": "CarePlan.activity:recommended-next-check-in",
+        "path": "CarePlan.activity",
+        "sliceName": "recommended-next-check-in",
+        "min": 1,
+        "max": "1"
       },
       {
-        "id": "CarePlan.author.display",
-        "path": "CarePlan.author.display",
-        "max": "0"
+        "id": "CarePlan.activity:recommended-next-check-in.detail",
+        "path": "CarePlan.activity.detail",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.kind",
+        "path": "CarePlan.activity.detail.kind",
+        "min": 1,
+        "fixedCode": "Appointment"
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.code",
+        "path": "CarePlan.activity.detail.code",
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type"
+        }
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.code.coding",
+        "path": "CarePlan.activity.detail.code.coding",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.code.coding.system",
+        "path": "CarePlan.activity.detail.code.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type"
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.code.coding.code",
+        "path": "CarePlan.activity.detail.code.coding.code",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.status",
+        "path": "CarePlan.activity.detail.status",
+        "fixedCode": "scheduled"
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.scheduled[x]",
+        "path": "CarePlan.activity.detail.scheduled[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Timing"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity:recommended-next-check-in.detail.scheduled[x].event",
+        "path": "CarePlan.activity.detail.scheduled[x].event",
+        "min": 1,
+        "max": "1",
+        "constraint": [
+          {
+            "key": "healthplan-scheduledTiming",
+            "severity": "error",
+            "human": "Expected date format is YYYY-MM.",
+            "expression": "$this.toString().matches('^\\\\d{4}-(0[1-9]|1[0-2])$')"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity:Diet",
+        "path": "CarePlan.activity",
+        "sliceName": "Diet",
+        "max": "7"
+      },
+      {
+        "id": "CarePlan.activity:Diet.outcomeCodeableConcept",
+        "path": "CarePlan.activity.outcomeCodeableConcept",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity:Diet.outcomeCodeableConcept.coding",
+        "path": "CarePlan.activity.outcomeCodeableConcept.coding",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-action-plan-category"
+        }
+      },
+      {
+        "id": "CarePlan.activity:Diet.outcomeCodeableConcept.coding.system",
+        "path": "CarePlan.activity.outcomeCodeableConcept.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-action-plan-category"
+      },
+      {
+        "id": "CarePlan.activity:Diet.outcomeCodeableConcept.coding.code",
+        "path": "CarePlan.activity.outcomeCodeableConcept.coding.code",
+        "min": 1,
+        "fixedCode": "AP1"
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail",
+        "path": "CarePlan.activity.detail",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail.kind",
+        "path": "CarePlan.activity.detail.kind",
+        "min": 1,
+        "fixedCode": "ServiceRequest"
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail.code",
+        "path": "CarePlan.activity.detail.code",
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-action-plan-diet-item"
+        }
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail.code.coding",
+        "path": "CarePlan.activity.detail.code.coding",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail.code.coding.system",
+        "path": "CarePlan.activity.detail.code.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-action-plan-diet-item"
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail.code.coding.code",
+        "path": "CarePlan.activity.detail.code.coding.code",
+        "min": 1,
+        "constraint": [
+          {
+            "key": "healthplan-diet",
+            "severity": "error",
+            "human": "AP1 allowed values",
+            "expression": "($this in ('DI001' | 'DI002' | 'DI003' | 'DI004' | 'DI005' | 'DI006' | 'DI007'))"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity:Diet.detail.status",
+        "path": "CarePlan.activity.detail.status",
+        "fixedCode": "scheduled"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination",
+        "path": "CarePlan.activity",
+        "sliceName": "Vaccination",
+        "max": "8"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.outcomeCodeableConcept",
+        "path": "CarePlan.activity.outcomeCodeableConcept",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.outcomeCodeableConcept.coding",
+        "path": "CarePlan.activity.outcomeCodeableConcept.coding",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-action-plan-category"
+        }
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.outcomeCodeableConcept.coding.system",
+        "path": "CarePlan.activity.outcomeCodeableConcept.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-action-plan-category"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.outcomeCodeableConcept.coding.code",
+        "path": "CarePlan.activity.outcomeCodeableConcept.coding.code",
+        "min": 1,
+        "fixedCode": "AP2"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail",
+        "path": "CarePlan.activity.detail",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.extension",
+        "path": "CarePlan.activity.detail.extension",
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.extension:vaccinationExtension",
+        "path": "CarePlan.activity.detail.extension",
+        "sliceName": "vaccinationExtension",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://synapxe.sg/extension/dueDate"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.kind",
+        "path": "CarePlan.activity.detail.kind",
+        "min": 1,
+        "fixedCode": "ServiceRequest"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.code",
+        "path": "CarePlan.activity.detail.code",
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-action-plan-vaccination-item"
+        }
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.code.coding",
+        "path": "CarePlan.activity.detail.code.coding",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.code.coding.system",
+        "path": "CarePlan.activity.detail.code.coding.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/ValueSet/hsg-action-plan-vaccination-item"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.code.coding.code",
+        "path": "CarePlan.activity.detail.code.coding.code",
+        "min": 1,
+        "constraint": [
+          {
+            "key": "healthplan-vaccination",
+            "severity": "error",
+            "human": "AP2 allowed values",
+            "expression": "($this in ('A-INF' | 'A-PNC' | 'A-PPSV' | 'A-Tdap' | 'A-HPV' | 'A-HEPB' | 'A-MMR' | 'A-CPOX'))"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.status",
+        "path": "CarePlan.activity.detail.status",
+        "fixedCode": "scheduled"
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.scheduled[x]",
+        "path": "CarePlan.activity.detail.scheduled[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.scheduled[x]:scheduledTiming",
+        "path": "CarePlan.activity.detail.scheduled[x]",
+        "sliceName": "scheduledTiming",
+        "type": [
+          {
+            "code": "Timing"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.scheduled[x]:scheduledTiming.repeat",
+        "path": "CarePlan.activity.detail.scheduled[x].repeat",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.scheduled[x]:scheduledTiming.repeat.frequency",
+        "path": "CarePlan.activity.detail.scheduled[x].repeat.frequency",
+        "min": 1,
+        "fixedPositiveInt": 1
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.scheduled[x]:scheduledTiming.repeat.period",
+        "path": "CarePlan.activity.detail.scheduled[x].repeat.period",
+        "min": 1,
+        "fixedDecimal": 1.0
+      },
+      {
+        "id": "CarePlan.activity:Vaccination.detail.scheduled[x]:scheduledTiming.repeat.periodUnit",
+        "path": "CarePlan.activity.detail.scheduled[x].repeat.periodUnit",
+        "min": 1,
+        "fixedCode": "a"
+      },
+      {
+        "id": "CarePlan.note",
+        "path": "CarePlan.note",
+        "max": "2"
+      },
+      {
+        "id": "CarePlan.note.extension",
+        "path": "CarePlan.note.extension",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.note.extension:noteExtension",
+        "path": "CarePlan.note.extension",
+        "sliceName": "noteExtension",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://synapxe.sg/extension/health-plan-note-type"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.note.text",
+        "path": "CarePlan.note.text",
+        "constraint": [
+          {
+            "key": "health-plan-note",
+            "severity": "error",
+            "human": "Value must be between 1 to 5000 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 5000"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.condition",
+        "path": "CarePlan.condition",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://synapxe.sg/StructureDefinition/putHealthplanCondition"
+            ],
+            "aggregation": [
+              "contained"
+            ]
+          }
+        ]
       }
     ]
   }
