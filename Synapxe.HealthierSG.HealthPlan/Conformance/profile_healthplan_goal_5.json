@@ -1,0 +1,123 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/profile/G5",
+  "name": "G5",
+  "status": "active",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Goal",
+  "baseDefinition": "https://synapxe.sg/StructureDefinition/HealthPlanGoal",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Goal.lifecycleStatus",
+        "path": "Goal.lifecycleStatus",
+        "fixedCode": "active"
+      },
+      {
+        "id": "Goal.description.coding",
+        "path": "Goal.description.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
+        }
+      },
+      {
+        "id": "Goal.description.coding.code",
+        "path": "Goal.description.coding.code",
+        "fixedCode": "G5"
+      },
+      {
+        "id": "Goal.target.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM006"
+      },
+      {
+        "id": "Goal.target.measure.text",
+        "path": "Goal.target.measure.text",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Quantity"
+            ]
+          }
+        ],
+        "constraint": [
+          {
+            "key": "rule1",
+            "severity": "error",
+            "human": "If present, GM006 goal value should be between 0.1 to 30.0 for mmol/L or 1 to 999 for mg/dL",
+            "expression": "($this.code = 'mmol/L' and $this.value >= 0.1 and $this.value <= 30.0 ) or ($this.code = 'mg/dL' and $this.value >= 1 and $this.value <= 999 and $this.value.toString().matches('^[0-9]*$'))"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "constraint": [
+          {
+            "key": "uom",
+            "severity": "error",
+            "human": "If present, GM006 goal measure allowed values are mmol/L, mg/dL",
+            "expression": "($this in ('mmol/L' | 'mg/dL'))"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      }
+    ]
+  }
+}

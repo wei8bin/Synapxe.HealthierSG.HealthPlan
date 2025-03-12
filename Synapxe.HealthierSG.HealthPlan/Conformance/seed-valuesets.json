@@ -1,0 +1,214 @@
+{
+  "resourceType": "Bundle",
+  "id": "valueSets",
+  "meta": {
+    "lastUpdated": "2021-05-05T08:04:45.3420489+00:00"
+  },
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-health-goal",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-health-goal",
+        "url": "https://synapxe.sg/ValueSet/hsg-health-goal",
+        "version": "0.1.0",
+        "name": "hsg-health-goal",
+        "title": "hsg-health-goal",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Health Goal",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-health-goal",
+              "concept": [
+                {
+                  "code": "G1",
+                  "display": "BMI Goal"
+                },
+                {
+                  "code": "G2",
+                  "display": "Smoking Cessation Goal"
+                },
+                {
+                  "code": "G3",
+                  "display": "Diabetes Goal"
+                },
+                {
+                  "code": "G4",
+                  "display": "Hypertension Goal"
+                },
+                {
+                  "code": "G5",
+                  "display": "Hyperlipidaemia Goal"
+                },
+                {
+                  "code": "G6",
+                  "display": "Programme Participation Goal"
+                },
+                {
+                  "code": "G7",
+                  "display": "Active Ageing Goal"
+                },
+                {
+                  "code": "G8",
+                  "display": "Exercise Goal"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-goal-measure",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-goal-measure",
+        "url": "https://synapxe.sg/ValueSet/hsg-goal-measure",
+        "version": "0.1.0",
+        "name": "hsg-goal-measure",
+        "title": "hsg-goal-measure",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Goal Measure",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
+              "concept": [
+                {
+                  "code": "GM001",
+                  "display": "Weight"
+                },
+                {
+                  "code": "GM002",
+                  "display": "Quit Smoking"
+                },
+                {
+                  "code": "GM003",
+                  "display": "Hba1c"
+                },
+                {
+                  "code": "GM004",
+                  "display": "BP1"
+                },
+                {
+                  "code": "GM005",
+                  "display": "Monitor Blood Pressure Frequency"
+                },
+                {
+                  "code": "GM006",
+                  "display": "LDL-C"
+                },
+                {
+                  "code": "GM007",
+                  "display": "Exercise"
+                },
+                {
+                  "code": "GM008",
+                  "display": "Body Weight Progress Milestone"
+                },
+                {
+                  "code": "GM009",
+                  "display": "Reduce Cigarette"
+                },
+                {
+                  "code": "GM010",
+                  "display": "Not Ready to Quit Smoking"
+                },
+                {
+                  "code": "GM011",
+                  "display": "Aerobic Exercise Steps"
+                },
+                {
+                  "code": "GM012",
+                  "display": "Aerobic Exercise Minutes, Intensity and Frequency"
+                },
+                {
+                  "code": "GM013",
+                  "display": "Strength Exercise"
+                },
+                {
+                  "code": "GM014",
+                  "display": "Balance Exercise"
+                },
+                {
+                  "code": "GM015",
+                  "display": "Flexibility Exercise"
+                },
+                {
+                  "code": "PRG001",
+                  "display": "Weight management programme"
+                },
+                {
+                  "code": "PRG002",
+                  "display": "Smoking cessation programme"
+                },
+                {
+                  "code": "PRG003",
+                  "display": "Chronic disease-specific programme"
+                },
+                {
+                  "code": "ACT001",
+                  "display": "Physical activities sign-up"
+                },
+                {
+                  "code": "ACT002",
+                  "display": "Mind-stimulating and social activities sign-up"
+                },
+                {
+                  "code": "ACT003",
+                  "display": "Vital Signs Monitoring"
+                },
+                {
+                  "code": "OTH001",
+                  "display": "Others, please specify:"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://synapxe.sg/ValueSet/hsg-exercise-intensity",
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "hsg-exercise-intensity",
+        "url": "https://synapxe.sg/ValueSet/hsg-exercise-intensity",
+        "version": "0.1.0",
+        "name": "hsg-exercise-intensity",
+        "title": "hsg-exercise-intensity",
+        "status": "active",
+        "date": "2021-12-01",
+        "publisher": "Integrated Health Information Systems Pte Ltd (IHiS)",
+        "description": "Aerobic Exercise Intensity",
+        "compose": {
+          "include": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-exercise-intensity",
+              "concept": [
+                {
+                  "code": "low",
+                  "display": "Low"
+                },
+                {
+                  "code": "moderate",
+                  "display": "Moderate"
+                },
+                {
+                  "code": "moderate-vigorous",
+                  "display": "Moderate-Vigorous"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

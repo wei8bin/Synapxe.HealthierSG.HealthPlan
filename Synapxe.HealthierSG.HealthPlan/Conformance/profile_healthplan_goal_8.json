@@ -1,0 +1,579 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/profile/G8",
+  "name": "G8",
+  "status": "active",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Goal",
+  "baseDefinition": "https://synapxe.sg/StructureDefinition/HealthPlanGoal",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Goal.lifecycleStatus",
+        "path": "Goal.lifecycleStatus",
+        "fixedCode": "active"
+      },
+      {
+        "id": "Goal.description.coding",
+        "path": "Goal.description.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
+        }
+      },
+      {
+        "id": "Goal.description.coding.code",
+        "path": "Goal.description.coding.code",
+        "fixedCode": "G8"
+      },
+      {
+        "id": "Goal.target",
+        "path": "Goal.target",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "measure.coding.code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Goal.target.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "constraint": [
+          {
+            "key": "rule1",
+            "severity": "error",
+            "human": "If present, G8 goal measure allowed values are GM007, GM011, GM012, GM013, GM014, GM015",
+            "expression": "($this in ('GM007' | 'GM011' | 'GM012' | 'GM013' | 'GM014' | 'GM015'))"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM007",
+        "path": "Goal.target",
+        "sliceName": "GM007",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM007.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM007.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM007.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM007.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM007.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM007"
+      },
+      {
+        "id": "Goal.target:GM007.measure.text",
+        "path": "Goal.target.measure.text",
+        "constraint": [
+          {
+            "key": "rule2",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM007.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM007.detail[x].value",
+        "path": "Goal.target.detail[x].value",
+        "min": 1,
+        "minValueDecimal": 1.0,
+        "maxValueDecimal": 7.0,
+        "constraint": [
+          {
+            "key": "rule3",
+            "severity": "error",
+            "human": "Valid numeric value required",
+            "expression": "$this.toString().matches('^[0-9]*$')"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM007.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM007.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "fixedCode": "wk"
+      },
+      {
+        "id": "Goal.target:GM007.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM011",
+        "path": "Goal.target",
+        "sliceName": "GM011",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM011.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM011.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM011.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM011.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM011.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM011"
+      },
+      {
+        "id": "Goal.target:GM011.measure.text",
+        "path": "Goal.target.measure.text",
+        "constraint": [
+          {
+            "key": "rule4",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM011.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM011.detail[x].value",
+        "path": "Goal.target.detail[x].value",
+        "min": 1,
+        "minValueDecimal": 1.0,
+        "maxValueDecimal": 99999.0,
+        "constraint": [
+          {
+            "key": "rule4",
+            "severity": "error",
+            "human": "Valid numeric value required",
+            "expression": "$this.toString().matches('^[0-9]*$')"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM011.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM011.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "fixedCode": "{steps}/d"
+      },
+      {
+        "id": "Goal.target:GM011.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM012",
+        "path": "Goal.target",
+        "sliceName": "GM012",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM012.extension:exerciseIntensity",
+        "path": "Goal.target.extension",
+        "sliceName": "exerciseIntensity",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://synapxe.sg/extension/exercise-intensity"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "Goal.target:GM012.extension:exerciseIntensity.url",
+        "path": "Goal.target.extension.url",
+        "fixedUri": "https://synapxe.sg/extension/exercise-intensity"
+      },
+      {
+        "id": "Goal.target:GM012.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM012.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM012.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM012.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM012"
+      },
+      {
+        "id": "Goal.target:GM012.measure.text",
+        "path": "Goal.target.measure.text",
+        "constraint": [
+          {
+            "key": "rule5",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM012.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM012.detail[x].value",
+        "path": "Goal.target.detail[x].value",
+        "min": 1,
+        "minValueDecimal": 1.0,
+        "maxValueDecimal": 999.0,
+        "constraint": [
+          {
+            "key": "rule6",
+            "severity": "error",
+            "human": "Valid numeric value required",
+            "expression": "$this.toString().matches('^[0-9]*$')"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM012.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM012.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "fixedCode": "min"
+      },
+      {
+        "id": "Goal.target:GM012.due[x]",
+        "path": "Goal.target.due[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM012.due[x].value",
+        "path": "Goal.target.due[x].value",
+        "min": 1,
+        "minValueDecimal": 1.0,
+        "maxValueDecimal": 7.0,
+        "constraint": [
+          {
+            "key": "rule7",
+            "severity": "error",
+            "human": "Valid numeric value required",
+            "expression": "$this.toString().matches('^[0-9]*$')"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM012.due[x].system",
+        "path": "Goal.target.due[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM012.due[x].code",
+        "path": "Goal.target.due[x].code",
+        "min": 1,
+        "fixedCode": "{days}/wk"
+      },
+      {
+        "id": "Goal.target:GM013",
+        "path": "Goal.target",
+        "sliceName": "GM013",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM013.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM013.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM013.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM013.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM013.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM013"
+      },
+      {
+        "id": "Goal.target:GM013.measure.text",
+        "path": "Goal.target.measure.text",
+        "constraint": [
+          {
+            "key": "rule7",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM013.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM014",
+        "path": "Goal.target",
+        "sliceName": "GM014",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM014.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM014.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM014.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM014.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM014.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM014"
+      },
+      {
+        "id": "Goal.target:GM014.measure.text",
+        "path": "Goal.target.measure.text",
+        "constraint": [
+          {
+            "key": "rule8",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM014.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM015",
+        "path": "Goal.target",
+        "sliceName": "GM015",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM015.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM015.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM015.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:GM015.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM015.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM015"
+      },
+      {
+        "id": "Goal.target:GM015.measure.text",
+        "path": "Goal.target.measure.text",
+        "constraint": [
+          {
+            "key": "rule9",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:GM015.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      }
+    ]
+  }
+}

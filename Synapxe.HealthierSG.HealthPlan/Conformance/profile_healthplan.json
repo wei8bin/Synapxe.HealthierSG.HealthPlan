@@ -1,0 +1,155 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/StructureDefinition/CarePlan-healthplan",
+  "name": "CarePlan_HealthPlan",
+  "status": "draft",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "CarePlan",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/CarePlan",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "CarePlan.id",
+        "path": "CarePlan.id",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.implicitRules",
+        "path": "CarePlan.implicitRules",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.language",
+        "path": "CarePlan.language",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.text",
+        "path": "CarePlan.text",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.contained",
+        "path": "CarePlan.contained",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "CarePlan.contained:goal",
+        "path": "CarePlan.contained",
+        "sliceName": "goal",
+        "type": [
+          {
+            "code": "Goal",
+            "profile": [
+              "https://synapxe.sg/StructureDefinition/HealthPlanGoal"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.custodian",
+        "path": "CarePlan.custodian",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.custodian.id",
+        "path": "CarePlan.custodian.id",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.extension",
+        "path": "CarePlan.custodian.extension",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.reference",
+        "path": "CarePlan.custodian.reference",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.type",
+        "path": "CarePlan.custodian.type",
+        "min": 1,
+        "fixedUri": "Organization"
+      },
+      {
+        "id": "CarePlan.custodian.identifier",
+        "path": "CarePlan.custodian.identifier",
+        "min": 1
+      },
+      {
+        "id": "CarePlan.custodian.identifier.id",
+        "path": "CarePlan.custodian.identifier.id",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.identifier.extension",
+        "path": "CarePlan.custodian.identifier.extension",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.identifier.use",
+        "path": "CarePlan.custodian.identifier.use",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.identifier.type",
+        "path": "CarePlan.custodian.identifier.type",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.identifier.system",
+        "path": "CarePlan.custodian.identifier.system",
+        "min": 1,
+        "fixedUri": "https://synapxe.sg/identifier/hci-code"
+      },
+      {
+        "id": "CarePlan.custodian.identifier.value",
+        "path": "CarePlan.custodian.identifier.value",
+        "min": 1,
+        "constraint": [
+          {
+            "key": "healthplan-organization",
+            "severity": "error",
+            "human": "custodian identifier value should not be empty",
+            "expression": "$this.length() > 0"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.custodian.identifier.period",
+        "path": "CarePlan.custodian.identifier.period",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.identifier.assigner",
+        "path": "CarePlan.custodian.identifier.assigner",
+        "max": "0"
+      },
+      {
+        "id": "CarePlan.custodian.display",
+        "path": "CarePlan.custodian.display",
+        "max": "0"
+      }
+    ]
+  }
+}

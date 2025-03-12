@@ -1,0 +1,232 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/profile/G7",
+  "name": "G7",
+  "status": "active",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Goal",
+  "baseDefinition": "https://synapxe.sg/StructureDefinition/HealthPlanGoal",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Goal.lifecycleStatus",
+        "path": "Goal.lifecycleStatus",
+        "fixedCode": "active"
+      },
+      {
+        "id": "Goal.description.coding",
+        "path": "Goal.description.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
+        }
+      },
+      {
+        "id": "Goal.description.coding.code",
+        "path": "Goal.description.coding.code",
+        "fixedCode": "G7"
+      },
+      {
+        "id": "Goal.target",
+        "path": "Goal.target",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "measure.coding.code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Goal.target.extension",
+        "path": "Goal.target.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.measure.id",
+        "path": "Goal.target.measure.id",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.measure.extension",
+        "path": "Goal.target.measure.extension",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "constraint": [
+          {
+            "key": "rule1",
+            "severity": "error",
+            "human": "If present, G7 goal measure allowed values are ACT001, ACT002, ACT003, OTH001",
+            "expression": "($this in ('ACT001' | 'ACT002' | 'ACT003' | 'OTH001'))"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:ACT001",
+        "path": "Goal.target",
+        "sliceName": "ACT001",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:ACT001.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:ACT001.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "ACT001"
+      },
+      {
+        "id": "Goal.target:ACT001.measure.text",
+        "path": "Goal.target.measure.text",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:ACT001.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:ACT002",
+        "path": "Goal.target",
+        "sliceName": "ACT002",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:ACT002.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:ACT002.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "ACT002"
+      },
+      {
+        "id": "Goal.target:ACT002.measure.text",
+        "path": "Goal.target.measure.text",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:ACT002.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:ACT003",
+        "path": "Goal.target",
+        "sliceName": "ACT003",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:ACT003.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:ACT003.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "ACT003"
+      },
+      {
+        "id": "Goal.target:ACT003.measure.text",
+        "path": "Goal.target.measure.text",
+        "max": "0"
+      },
+      {
+        "id": "Goal.target:ACT003.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:OTH001",
+        "path": "Goal.target",
+        "sliceName": "OTH001",
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:OTH001.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:OTH001.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "OTH001"
+      },
+      {
+        "id": "Goal.target:OTH001.measure.text",
+        "path": "Goal.target.measure.text",
+        "min": 1,
+        "constraint": [
+          {
+            "key": "rule2",
+            "severity": "error",
+            "human": "Value must be between 1 to 500 characters",
+            "expression": "$this.length() > 0 and $this.length() <= 500"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target:OTH001.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "max": "0",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:OTH001.due[x]",
+        "path": "Goal.target.due[x]",
+        "max": "0",
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      }
+    ]
+  }
+}
