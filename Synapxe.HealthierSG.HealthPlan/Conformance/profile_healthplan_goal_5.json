@@ -17,15 +17,6 @@
         "fixedCode": "G5"
       },
       {
-        "id": "Goal.target.measure.coding",
-        "path": "Goal.target.measure.coding",
-        "max": "1",
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
-        }
-      },
-      {
         "id": "Goal.target.measure.coding.code",
         "path": "Goal.target.measure.coding.code",
         "fixedCode": "GM006"

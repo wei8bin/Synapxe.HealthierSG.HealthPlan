@@ -63,7 +63,12 @@
       {
         "id": "Goal.target.measure.coding",
         "path": "Goal.target.measure.coding",
-        "min": 1
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
       },
       {
         "id": "Goal.target.measure.coding.system",

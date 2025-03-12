@@ -1,0 +1,112 @@
+{
+  "resourceType": "CarePlan",
+  "contained": [
+    {
+      "resourceType": "Goal",
+      "id": "f873f0480edf4e7da98c01be4c05ad91",
+      "lifecycleStatus": "active",
+      "description": {
+        "coding": [
+          {
+            "system": "https://synapxe.sg/ValueSet/hsg-health-goal",
+            "code": "G1"
+          }
+        ]
+      },
+      "target": [
+        {
+          "measure": {
+            "coding": [
+              {
+                "system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
+                "code": "GM001"
+              }
+            ]
+          },
+          "detailQuantity": {
+            "value": 72.3,
+            "system": "http://unitsofmeasure.org",
+            "code": "kg"
+          }
+        },
+        {
+          "measure": {
+            "coding": [
+              {
+                "system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
+                "code": "GM008",
+                "display": "Body Weight Progress Milestone"
+              }
+            ]
+          },
+          "detailQuantity": {
+            "value": 77.8,
+            "system": "http://unitsofmeasure.org",
+            "code": "kg"
+          },
+          "dueDuration": {
+            "value": 3,
+            "system": "http://unitsofmeasure.org",
+            "code": "mo"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "active",
+  "intent": "plan",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "https://synapxe.sg/ValueSet/hsg-care-plan-category",
+          "code": "pophealth-plan"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "type": "Patient",
+    "identifier": {
+      "system": "https://synapxe.sg/identifier/nric",
+      "value": "S1234567A"
+    }
+  },
+  "period": {
+    "start": "2020-04-01T10:30:01+08:00"
+  },
+  "author": {
+    "type": "Organization",
+    "identifier": {
+      "system": "https://synapxe.sg/identifier/hci-code",
+      "value": "1123001"
+    }
+  },
+  "goal": [
+    {
+      "reference": "#f873f0480edf4e7da98c01be4c05ad91"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "Appointment",
+        "code": {
+          "coding": [
+            {
+              "system": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+              "code": "recommended-next-check-in",
+              "display": "Recommended Next Check-in"
+            }
+          ]
+        },
+        "status": "scheduled",
+        "scheduledTiming": {
+          "event": [
+            "2025-10"
+          ]
+        }
+      }
+    }
+  ]
+}

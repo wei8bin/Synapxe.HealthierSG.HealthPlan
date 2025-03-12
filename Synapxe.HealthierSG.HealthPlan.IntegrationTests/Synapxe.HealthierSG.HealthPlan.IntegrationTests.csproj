@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.Testing" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.*" />
+    <PackageReference Include="coverlet.collector" Version="6.0.*">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Reqnroll.xUnit" Version="2.2.*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.*" />
+    <PackageReference Include="Ihis.FhirEngine.Data.Testing.R4" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Synapxe.HealthierSG.HealthPlan.AppHost\Synapxe.HealthierSG.HealthPlan.AppHost.csproj" />
+    <ProjectReference Include="..\Synapxe.HealthierSG.HealthPlan\Synapxe.HealthierSG.HealthPlan.csproj" />
+  </ItemGroup>
+
+</Project>

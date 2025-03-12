@@ -17,11 +17,6 @@
         "fixedCode": "G2"
       },
       {
-        "id": "Goal.target.measure.coding",
-        "path": "Goal.target.measure.coding",
-        "max": "1"
-      },
-      {
         "id": "Goal.target.measure.coding.code",
         "path": "Goal.target.measure.coding.code",
         "constraint": [
