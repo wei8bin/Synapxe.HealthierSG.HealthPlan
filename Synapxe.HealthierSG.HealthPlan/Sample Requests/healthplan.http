@@ -78,7 +78,7 @@ Content-Type: application/fhir+json
 	"subject": {
 		"reference": "#patient-id"
 	},
-	"custodian": {
+	"author": {
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
@@ -179,7 +179,7 @@ Content-Type: application/fhir+json
 	"subject": {
 		"reference": "#patient-id"
 	},
-	"custodian": {
+	"author": {
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
@@ -333,7 +333,7 @@ Content-Type: application/fhir+json
 	"subject": {
 		"reference": "#patient-id"
 	},
-	"custodian": {
+	"author": {
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
@@ -855,7 +855,7 @@ Content-Type: application/fhir+json
 	"subject": {
 		"reference": "#patient-id"
 	},
-	"custodian": {
+	"author": {
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
