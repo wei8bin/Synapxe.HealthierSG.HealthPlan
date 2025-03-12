@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "url": "https://synapxe.sg/profile/G8",
-  "name": "G8",
+  "name": "Exercise_Goal",
   "status": "active",
   "fhirVersion": "4.3.0",
   "kind": "resource",
@@ -12,36 +12,9 @@
   "differential": {
     "element": [
       {
-        "id": "Goal.lifecycleStatus",
-        "path": "Goal.lifecycleStatus",
-        "fixedCode": "active"
-      },
-      {
-        "id": "Goal.description.coding",
-        "path": "Goal.description.coding",
-        "max": "1",
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
-        }
-      },
-      {
         "id": "Goal.description.coding.code",
         "path": "Goal.description.coding.code",
         "fixedCode": "G8"
-      },
-      {
-        "id": "Goal.target",
-        "path": "Goal.target",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "measure.coding.code"
-            }
-          ],
-          "rules": "open"
-        }
       },
       {
         "id": "Goal.target.measure.coding",
@@ -73,21 +46,6 @@
         "path": "Goal.target",
         "sliceName": "GM007",
         "max": "1"
-      },
-      {
-        "id": "Goal.target:GM007.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM007.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM007.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
       },
       {
         "id": "Goal.target:GM007.measure.coding",
@@ -171,21 +129,6 @@
         "path": "Goal.target",
         "sliceName": "GM011",
         "max": "1"
-      },
-      {
-        "id": "Goal.target:GM011.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM011.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM011.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
       },
       {
         "id": "Goal.target:GM011.measure.coding",
@@ -288,16 +231,6 @@
         "id": "Goal.target:GM012.extension:exerciseIntensity.url",
         "path": "Goal.target.extension.url",
         "fixedUri": "https://synapxe.sg/extension/exercise-intensity"
-      },
-      {
-        "id": "Goal.target:GM012.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM012.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
       },
       {
         "id": "Goal.target:GM012.measure.coding",
@@ -410,21 +343,6 @@
         "max": "1"
       },
       {
-        "id": "Goal.target:GM013.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM013.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM013.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
-      },
-      {
         "id": "Goal.target:GM013.measure.coding",
         "path": "Goal.target.measure.coding",
         "max": "1",
@@ -467,21 +385,6 @@
         "max": "1"
       },
       {
-        "id": "Goal.target:GM014.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM014.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM014.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
-      },
-      {
         "id": "Goal.target:GM014.measure.coding",
         "path": "Goal.target.measure.coding",
         "max": "1",
@@ -522,21 +425,6 @@
         "path": "Goal.target",
         "sliceName": "GM015",
         "max": "1"
-      },
-      {
-        "id": "Goal.target:GM015.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM015.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target:GM015.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
       },
       {
         "id": "Goal.target:GM015.measure.coding",

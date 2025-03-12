@@ -17,9 +17,19 @@
         "min": 1
       },
       {
+        "id": "Goal.lifecycleStatus",
+        "path": "Goal.lifecycleStatus",
+        "fixedCode": "active"
+      },
+      {
         "id": "Goal.description.coding",
         "path": "Goal.description.coding",
-        "min": 1
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
+        }
       },
       {
         "id": "Goal.description.coding.system",
@@ -31,6 +41,19 @@
         "id": "Goal.description.coding.code",
         "path": "Goal.description.coding.code",
         "min": 1
+      },
+      {
+        "id": "Goal.target",
+        "path": "Goal.target",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "measure.coding.code"
+            }
+          ],
+          "rules": "open"
+        }
       },
       {
         "id": "Goal.target.measure",

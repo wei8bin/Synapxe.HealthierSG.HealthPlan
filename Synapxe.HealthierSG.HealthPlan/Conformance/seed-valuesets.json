@@ -55,6 +55,10 @@
                 {
                   "code": "G8",
                   "display": "Exercise Goal"
+                },
+                {
+                  "code": "G9",
+                  "display": "Mental Health Goal"
                 }
               ]
             }

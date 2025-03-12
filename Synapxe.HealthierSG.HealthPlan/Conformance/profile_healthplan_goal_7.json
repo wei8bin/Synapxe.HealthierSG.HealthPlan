@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "url": "https://synapxe.sg/profile/G7",
-  "name": "G7",
+  "name": "Active_Ageing_Goal",
   "status": "active",
   "fhirVersion": "4.3.0",
   "kind": "resource",
@@ -12,51 +12,9 @@
   "differential": {
     "element": [
       {
-        "id": "Goal.lifecycleStatus",
-        "path": "Goal.lifecycleStatus",
-        "fixedCode": "active"
-      },
-      {
-        "id": "Goal.description.coding",
-        "path": "Goal.description.coding",
-        "max": "1",
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
-        }
-      },
-      {
         "id": "Goal.description.coding.code",
         "path": "Goal.description.coding.code",
         "fixedCode": "G7"
-      },
-      {
-        "id": "Goal.target",
-        "path": "Goal.target",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "measure.coding.code"
-            }
-          ],
-          "rules": "open"
-        }
-      },
-      {
-        "id": "Goal.target.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
       },
       {
         "id": "Goal.target.measure.coding.code",
@@ -91,11 +49,6 @@
         "fixedCode": "ACT001"
       },
       {
-        "id": "Goal.target:ACT001.measure.text",
-        "path": "Goal.target.measure.text",
-        "max": "0"
-      },
-      {
         "id": "Goal.target:ACT001.due[x]",
         "path": "Goal.target.due[x]",
         "max": "0",
@@ -126,11 +79,6 @@
         "fixedCode": "ACT002"
       },
       {
-        "id": "Goal.target:ACT002.measure.text",
-        "path": "Goal.target.measure.text",
-        "max": "0"
-      },
-      {
         "id": "Goal.target:ACT002.due[x]",
         "path": "Goal.target.due[x]",
         "max": "0",
@@ -159,11 +107,6 @@
         "id": "Goal.target:ACT003.measure.coding.code",
         "path": "Goal.target.measure.coding.code",
         "fixedCode": "ACT003"
-      },
-      {
-        "id": "Goal.target:ACT003.measure.text",
-        "path": "Goal.target.measure.text",
-        "max": "0"
       },
       {
         "id": "Goal.target:ACT003.due[x]",

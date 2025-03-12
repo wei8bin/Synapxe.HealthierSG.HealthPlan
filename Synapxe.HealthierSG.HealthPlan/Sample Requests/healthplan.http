@@ -9,18 +9,8 @@ Content-Type: application/fhir+json
 	"resourceType": "CarePlan",
 	"contained": [
 		{
-			"resourceType": "Patient",
-			"id": "patient-id",
-			"identifier": [
-				{
-					"system": "https://synapxe.sg/identifier/nric",
-					"value": "S1234567A"
-				}
-			],
-		},
-		{
 			"resourceType": "Goal",
-			"id": "goal-1",
+			"id": "f873f0480edf4e7da98c01be4c05ad91",
 			"lifecycleStatus": "active",
 			"description": {
 				"coding": [
@@ -29,9 +19,6 @@ Content-Type: application/fhir+json
 						"code": "G1"
 					}
 				]
-			},
-			"subject": {
-				"reference": "#patient-id"
 			},
 			"target": [
 				{
@@ -44,7 +31,7 @@ Content-Type: application/fhir+json
 						]
 					},
 					"detailQuantity": {
-						"value": 65.8,
+						"value": 72.3,
 						"system": "http://unitsofmeasure.org",
 						"code": "kg"
 					}
@@ -60,12 +47,12 @@ Content-Type: application/fhir+json
 						]
 					},
 					"detailQuantity": {
-						"value": 60.8,
+						"value": 77.8,
 						"system": "http://unitsofmeasure.org",
 						"code": "kg"
 					},
 					"dueDuration": {
-						"value": 1,
+						"value": 3,
 						"system": "http://unitsofmeasure.org",
 						"code": "mo"
 					}
@@ -75,156 +62,83 @@ Content-Type: application/fhir+json
 	],
 	"status": "active",
 	"intent": "plan",
-	"subject": {
-		"reference": "#patient-id"
-	},
-	"author": {
-		"type": "Organization",
-		"identifier": {
-			"system": "https://synapxe.sg/identifier/hci-code",
-			"value": "a"
-		}
-	},
-	"goal": [
+	"category": [
 		{
-			"reference": "#goal-1"
-		}
-	]
-}
-
-### goal 2
-
-POST {{baseUrl}}/CarePlan
-x-api-key: {{apiKey}}
-Content-Type: application/fhir+json
-
-{
-	"resourceType": "CarePlan",
-	"contained": [
-		{
-			"resourceType": "Patient",
-			"id": "patient-id",
-			"identifier": [
+			"coding": [
 				{
-					"system": "https://synapxe.sg/identifier/nric",
-					"value": "S1234567A"
-				}
-			],
-		},
-		{
-			"resourceType": "Goal",
-			"id": "goal-2",
-			"lifecycleStatus": "active",
-			"description": {
-				"coding": [
-					{
-						"system": "https://synapxe.sg/ValueSet/hsg-health-goal",
-						"code": "G2"
-					}
-				]
-			},
-			"subject": {
-				"reference": "#patient-id"
-			},
-			"target": [
-				{
-					"measure": {
-						"coding": [
-							{
-								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM002"
-							}
-						]
-					},
-					"dueDate": "2023-04-01"
-				},
-				{
-					"measure": {
-						"coding": [
-							{
-								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM009",
-								"display": "Reduce Cigarette"
-							}
-						]
-					},
-					"detailQuantity": {
-						"value": 5,
-						"system": "http://unitsofmeasure.org",
-						"code": "{sticks}/d"
-					},
-					"dueDuration": {
-						"value": 1,
-						"system": "http://unitsofmeasure.org",
-						"code": "mo"
-					}
-				},
-				{
-					"measure": {
-						"coding": [
-							{
-								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM010",
-								"display": "Not Ready to Quit Smoking"
-							}
-						]
-					},
-					"dueDate": "2025-04-01"
+					"system": "https://synapxe.sg/ValueSet/hsg-care-plan-category",
+					"code": "pophealth-plan"
 				}
 			]
 		}
 	],
-	"status": "active",
-	"intent": "plan",
 	"subject": {
-		"reference": "#patient-id"
+		"type": "Patient",
+		"identifier": {
+			"system": "https://synapxe.sg/identifier/nric",
+			"value": "S1234567A"
+		}
+	},
+	"period": {
+		"start": "2020-04-01T10:30:01+08:00"
 	},
 	"author": {
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
-			"value": "a"
+			"value": "1123001"
 		}
 	},
 	"goal": [
 		{
-			"reference": "#goal-2"
+			"reference": "#f873f0480edf4e7da98c01be4c05ad91"
+		}
+	],
+	"activity": [
+		{
+			"detail": {
+				"kind": "Appointment",
+				"code": {
+					"coding": [
+						{
+							"system": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+							"code": "recommended-next-check-in",
+							"display": "Recommended Next Check-in"
+						}
+					]
+				},
+				"status": "scheduled",
+				"scheduledTiming": {
+					"event": [
+						"2025-10"
+					]
+				}
+			}
 		}
 	]
 }
 
-### goal 1 and 2
+### goal 9
+
 POST {{baseUrl}}/CarePlan
 x-api-key: {{apiKey}}
 Content-Type: application/fhir+json
+
 
 {
 	"resourceType": "CarePlan",
 	"contained": [
 		{
-			"resourceType": "Patient",
-			"id": "patient-id",
-			"identifier": [
-				{
-					"system": "https://synapxe.sg/identifier/nric",
-					"value": "S1234567A"
-				}
-			],
-		},
-		{
 			"resourceType": "Goal",
-			"id": "goal-1",
+			"id": "f873f0480edf4e7da98c01be4c05ad91",
 			"lifecycleStatus": "active",
 			"description": {
 				"coding": [
 					{
 						"system": "https://synapxe.sg/ValueSet/hsg-health-goal",
-						"code": "G1"
+						"code": "G9"
 					}
 				]
-			},
-			"subject": {
-				"reference": "#patient-id"
 			},
 			"target": [
 				{
@@ -237,7 +151,7 @@ Content-Type: application/fhir+json
 						]
 					},
 					"detailQuantity": {
-						"value": 65.8,
+						"value": 72.3,
 						"system": "http://unitsofmeasure.org",
 						"code": "kg"
 					}
@@ -253,99 +167,73 @@ Content-Type: application/fhir+json
 						]
 					},
 					"detailQuantity": {
-						"value": 60.8,
+						"value": 77.8,
 						"system": "http://unitsofmeasure.org",
 						"code": "kg"
 					},
 					"dueDuration": {
-						"value": 1,
+						"value": 3,
 						"system": "http://unitsofmeasure.org",
 						"code": "mo"
 					}
-				}
-			]
-		},
-		{
-			"resourceType": "Goal",
-			"id": "goal-2",
-			"lifecycleStatus": "active",
-			"description": {
-				"coding": [
-					{
-						"system": "https://synapxe.sg/ValueSet/hsg-health-goal",
-						"code": "G2"
-					}
-				]
-			},
-			"subject": {
-				"reference": "#patient-id"
-			},
-			"target": [
-				{
-					"measure": {
-						"coding": [
-							{
-								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM002"
-							}
-						]
-					},
-					"dueDate": "2023-04-01"
-				},
-				{
-					"measure": {
-						"coding": [
-							{
-								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM009",
-								"display": "Reduce Cigarette"
-							}
-						]
-					},
-					"detailQuantity": {
-						"value": 5,
-						"system": "http://unitsofmeasure.org",
-						"code": "{sticks}/d"
-					},
-					"dueDuration": {
-						"value": 1,
-						"system": "http://unitsofmeasure.org",
-						"code": "mo"
-					}
-				},
-				{
-					"measure": {
-						"coding": [
-							{
-								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM010",
-								"display": "Not Ready to Quit Smoking"
-							}
-						]
-					},
-					"dueDate": "2025-04-01"
 				}
 			]
 		}
 	],
 	"status": "active",
 	"intent": "plan",
+	"category": [
+		{
+			"coding": [
+				{
+					"system": "https://synapxe.sg/ValueSet/hsg-care-plan-category",
+					"code": "pophealth-plan"
+				}
+			]
+		}
+	],
 	"subject": {
-		"reference": "#patient-id"
+		"type": "Patient",
+		"identifier": {
+			"system": "https://synapxe.sg/identifier/nric",
+			"value": "S1234567A"
+		}
+	},
+	"period": {
+		"start": "2020-04-01T10:30:01+08:00"
 	},
 	"author": {
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
-			"value": "a"
+			"value": "1123001"
 		}
 	},
 	"goal": [
 		{
-			"reference": "#goal-1"
-		},
+			"reference": "#f873f0480edf4e7da98c01be4c05ad91"
+		}
+	],
+	"activity": [
 		{
-			"reference": "#goal-2"
+			"detail": {
+				"kind": "Appointment",
+				"code": {
+					"coding": [
+						{
+							"system": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+							"code": "recommended-next-check-in",
+							"display": "Recommended Next Check-in"
+						}
+					]
+				},
+				"status": "scheduled",
+				"scheduledTiming": {
+					"event": [
+						"2025-10"
+					]
+				}
+			}
 		}
 	]
 }

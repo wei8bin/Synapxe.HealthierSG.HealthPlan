@@ -1,7 +1,7 @@
 {
   "resourceType": "StructureDefinition",
   "url": "https://synapxe.sg/profile/G3",
-  "name": "G3",
+  "name": "Diabetes_Goal",
   "status": "active",
   "fhirVersion": "4.3.0",
   "kind": "resource",
@@ -12,44 +12,9 @@
   "differential": {
     "element": [
       {
-        "id": "Goal.lifecycleStatus",
-        "path": "Goal.lifecycleStatus",
-        "fixedCode": "active"
-      },
-      {
-        "id": "Goal.description.coding",
-        "path": "Goal.description.coding",
-        "min": 1,
-        "max": "1",
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://synapxe.sg/ValueSet/hsg-health-goal"
-        }
-      },
-      {
-        "id": "Goal.description.coding.system",
-        "path": "Goal.description.coding.system",
-        "fixedCode": "https://synapxe.sg/ValueSet/hsg-health-goal"
-      },
-      {
         "id": "Goal.description.coding.code",
         "path": "Goal.description.coding.code",
         "fixedCode": "G3"
-      },
-      {
-        "id": "Goal.target.extension",
-        "path": "Goal.target.extension",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target.measure.id",
-        "path": "Goal.target.measure.id",
-        "max": "0"
-      },
-      {
-        "id": "Goal.target.measure.extension",
-        "path": "Goal.target.measure.extension",
-        "max": "0"
       },
       {
         "id": "Goal.target.measure.coding",
