@@ -3,7 +3,7 @@
   "url": "https://synapxe.sg/StructureDefinition/CarePlan-healthplan",
   "name": "CarePlan_HealthPlan",
   "status": "draft",
-  "fhirVersion": "5.0.0",
+  "fhirVersion": "4.3.0",
   "kind": "resource",
   "abstract": false,
   "type": "CarePlan",

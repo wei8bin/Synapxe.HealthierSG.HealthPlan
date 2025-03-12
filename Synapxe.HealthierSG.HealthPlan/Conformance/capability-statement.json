@@ -1,13 +1,13 @@
 {
   "resourceType": "CapabilityStatement",
+  "url": "https://synapxe.sg/healthiersg/capabilitystatement",
   "version": "1.0.0",
   "status": "draft",
   "experimental": true,
   "kind": "capability",
-  "fhirVersion": "4.0.1",
+  "fhirVersion": "5.0.0",
   "format": [
-    "application/fhir+json",
-    "json"
+    "application/fhir+json"
   ],
   "rest": [
     {
@@ -64,77 +64,43 @@
           "versioning": "no-version"
         },
         {
-          "type": "Appointment",
-          "profile": "StructureDefinition/Appointment-custom",
+          "type": "CarePlan",
+          "profile": "https://synapxe.sg/StructureDefinition/CarePlan-healthplan",
           "interaction": [
             {
               "code": "read",
-              "documentation": "Retrieves an appointment resource by id."
+              "documentation": "Retrieves a care plan resource by id."
             },
             {
               "code": "vread",
-              "documentation": "Retrieves an appointment resource by id and version."
+              "documentation": "Retrieves a care plan resource by id and version."
             },
             {
               "code": "history-instance",
-              "documentation": "Searches the appointment resource instance version history."
+              "documentation": "Searches the care plan resource instance version history."
             },
             {
               "code": "history-type",
-              "documentation": "Searches the appointment resource version history."
+              "documentation": "Searches the care plan resource version history."
             },
             {
               "code": "create",
-              "documentation": "Creates an appointment resource."
+              "documentation": "Creates a care plan resource."
             },
             {
               "code": "update",
-              "documentation": "Updates an appointment resource."
+              "documentation": "Updates a care plan resource."
             },
             {
               "code": "patch",
-              "documentation": "Updates an appointment resource."
+              "documentation": "Updates a care plan resource."
             },
             {
               "code": "search-type",
-              "documentation": "Searches the appointment resource."
-            }
-          ],
-          "searchParam": [
-            {
-              "name": "active-participant",
-              "definition": "http://sypnapxe.sg/fhir/SearchParameter/Appointment-active-participant",
-              "type": "reference",
-              "documentation": "Filters by active participant"
-            },
-            {
-              "name": "actor",
-              "type": "reference",
-              "documentation": "Any one of the individuals participating in the appointment"
-            },
-            {
-              "name": "date",
-              "type": "date",
-              "documentation": "Appointment date/time"
-            },
-            {
-              "name": "patient",
-              "type": "reference",
-              "documentation": "One of the individuals of the appointment is this patient"
-            }
-          ],
-          "versioning": "versioned",
-          "operation": [
-            {
-              "name": "cancel",
-              "definition": "http://sypnapxe.sg/fhir/OperationDefinition/Appointment-cancel"
-            },
-            {
-              "name": "move-appointment-date",
-              "definition": "http://sypnapxe.sg/fhir/OperationDefinition/Appointment-move-appointment-date"
+              "documentation": "Searches the care plan resource."
             }
           ]
-        },
+        }
       ],
       "interaction": [
         {

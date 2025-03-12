@@ -3,7 +3,7 @@
   "url": "https://synapxe.sg/profile/G4",
   "name": "G4",
   "status": "active",
-  "fhirVersion": "5.0.0",
+  "fhirVersion": "4.3.0",
   "kind": "resource",
   "abstract": false,
   "type": "Goal",

@@ -32,17 +32,10 @@
     "Repository": {
       "FhirDataStore<@NoSql>": {
         "UseSqlDocument": {
-          "EnableRetryOnFailure": true,
-          "ReferencedTypes": [
-            "Patient",
-            "Practitioner"
-          ]
+          "EnableRetryOnFailure": true
         },
         "IncludeStandardSearchParams": true,
-        "ConnectionString": "data",
-        "AcceptedTypes": [
-          "Appointment"
-        ]
+        "ConnectionString": "data"
       }
     }
   }
