@@ -1,0 +1,214 @@
+{
+  "resourceType": "StructureDefinition",
+  "url": "https://synapxe.sg/profile/G9",
+  "name": "MentalHealth_Goal",
+  "status": "active",
+  "fhirVersion": "4.3.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Goal",
+  "baseDefinition": "https://synapxe.sg/StructureDefinition/HealthPlanGoal",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Goal.description.coding.code",
+        "path": "Goal.description.coding.code",
+        "fixedCode": "G9"
+      },
+      {
+        "id": "Goal.target.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "constraint": [
+          {
+            "key": "availablegoals",
+            "severity": "error",
+            "human": "If present, G9 goal measure allowed values are GM016, GM017, GM018",
+            "expression": "($this in ('GM016' | 'GM017' | 'GM018'))"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM016",
+        "path": "Goal.target",
+        "sliceName": "GM016",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM016.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM016.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM016"
+      },
+      {
+        "id": "Goal.target:GM016.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM016.detail[x].value",
+        "path": "Goal.target.detail[x].value",
+        "min": 1,
+        "minValueDecimal": 10.0,
+        "maxValueDecimal": 30.0
+      },
+      {
+        "id": "Goal.target:GM016.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM016.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "fixedCode": "min"
+      },
+      {
+        "id": "Goal.target:GM017",
+        "path": "Goal.target",
+        "sliceName": "GM017",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM017.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM017.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM017"
+      },
+      {
+        "id": "Goal.target:GM017.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM017.detail[x].value",
+        "path": "Goal.target.detail[x].value",
+        "min": 1,
+        "minValueDecimal": 30.0,
+        "maxValueDecimal": 60.0
+      },
+      {
+        "id": "Goal.target:GM017.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM017.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "fixedCode": "min"
+      },
+      {
+        "id": "Goal.target:GM018",
+        "path": "Goal.target",
+        "sliceName": "GM018",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Goal.target:GM018.measure.coding",
+        "path": "Goal.target.measure.coding",
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://synapxe.sg/ValueSet/hsg-goal-measure"
+        }
+      },
+      {
+        "id": "Goal.target:GM018.measure.coding.code",
+        "path": "Goal.target.measure.coding.code",
+        "fixedCode": "GM018"
+      },
+      {
+        "id": "Goal.target:GM018.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://unitsofmeasure.org"
+        }
+      },
+      {
+        "id": "Goal.target:GM018.detail[x].value",
+        "path": "Goal.target.detail[x].value",
+        "min": 1,
+        "minValueDecimal": 20.0,
+        "maxValueDecimal": 20.0
+      },
+      {
+        "id": "Goal.target:GM018.detail[x].system",
+        "path": "Goal.target.detail[x].system",
+        "min": 1,
+        "fixedUri": "http://unitsofmeasure.org"
+      },
+      {
+        "id": "Goal.target:GM018.detail[x].code",
+        "path": "Goal.target.detail[x].code",
+        "min": 1,
+        "fixedCode": "min"
+      },
+      {
+        "id": "Goal.target.due[x]",
+        "path": "Goal.target.due[x]",
+        "min": 0,
+        "type": [
+          {
+            "code": "Duration"
+          }
+        ]
+      }
+    ]
+  }
+}
+

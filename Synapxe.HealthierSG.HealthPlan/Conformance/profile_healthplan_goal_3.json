@@ -80,7 +80,7 @@
       {
         "id": "Goal.target.due[x]",
         "path": "Goal.target.due[x]",
-        "max": "0",
+        "min": 0,
         "type": [
           {
             "code": "Duration"

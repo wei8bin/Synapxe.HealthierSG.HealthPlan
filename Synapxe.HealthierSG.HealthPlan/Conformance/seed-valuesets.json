@@ -145,6 +145,18 @@
                   "display": "Flexibility Exercise"
                 },
                 {
+                  "code": "GM016",
+                  "display": "Practice at least 10 minutes of guided meditation or deep breathing (morning and evening)."
+                },
+                {
+                  "code": "GM017",
+                  "display": "Engage in 30 minutes of physical activity (walking, yoga, or any preferred exercise)."
+                },
+                {
+                  "code": "GM018",
+                  "display": "Limit screen time at 20 mins before bed to enhance sleep quality."
+                },
+                {
                   "code": "PRG001",
                   "display": "Weight management programme"
                 },
