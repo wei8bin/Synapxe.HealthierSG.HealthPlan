@@ -28,12 +28,6 @@
             "expression": "contained.exists().not() or contained.where(description.coding.where(code = 'G2')).exists().not() or contained.where(description.coding.where(code = 'G2')).target.exists().not() or contained.where(description.coding.where(code = 'G2')).target.where(measure.coding.where(code='GM010')).due.exists().not() or contained.where(description.coding.where(code = 'G2')).target.where(measure.coding.where(code='GM010')).due>period.start"
           },
           {
-            "key": "healthplan-activity-recommended-scheduled",
-            "severity": "error",
-            "human": "Year of recommended-next-check-in must be greater than or equal to year of period.start",
-            "expression": "activity.detail.where(code.coding.where(code='recommended-next-check-in')).scheduled.event.toString().substring(0, 4)>=period.start.toString().substring(0, 4)"
-          },
-          {
             "key": "healthplan-activity-vaccination-INF-constraint",
             "severity": "error",
             "human": "if vaccination 'A-INF' exists, then either scheduledtiming or duedate extension must be present.",
@@ -190,7 +184,7 @@
         "id": "CarePlan.activity:recommended-next-check-in",
         "path": "CarePlan.activity",
         "sliceName": "recommended-next-check-in",
-        "min": 1,
+        "min": 0,
         "max": "1"
       },
       {

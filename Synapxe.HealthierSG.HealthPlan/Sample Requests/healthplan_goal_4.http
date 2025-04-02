@@ -10,13 +10,13 @@ Content-Type: application/fhir+json
 	"contained": [
 		{
 			"resourceType": "Goal",
-			"id": "goal-3",
+			"id": "goal-4",
 			"lifecycleStatus": "active",
 			"description": {
 				"coding": [
 					{
 						"system": "https://synapxe.sg/ValueSet/hsg-health-goal",
-						"code": "G3"
+						"code": "G4"
 					}
 				]
 			},
@@ -26,14 +26,36 @@ Content-Type: application/fhir+json
 						"coding": [
 							{
 								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
-								"code": "GM003"
+								"code": "GM004"
+							}
+						]
+					},
+					"detailRatio": {
+						"numerator": {
+							"value": 130,
+							"system": "http://unitsofmeasure.org",
+							"code": "mm[Hg]"
+						},
+						"denominator": {
+							"value": 80,
+							"system": "http://unitsofmeasure.org",
+							"code": "mm[Hg]"
+						}
+					}
+				},
+				{
+					"measure": {
+						"coding": [
+							{
+								"system": "https://synapxe.sg/ValueSet/hsg-goal-measure",
+								"code": "GM005"
 							}
 						]
 					},
 					"detailQuantity": {
-						"value": 7,
+						"value": 12,
 						"system": "http://unitsofmeasure.org",
-						"code": "%"
+						"code": "d"
 					}
 				}
 			]
@@ -65,12 +87,34 @@ Content-Type: application/fhir+json
 		"type": "Organization",
 		"identifier": {
 			"system": "https://synapxe.sg/identifier/hci-code",
-			"value": "hci123"
+			"value": "a"
 		}
 	},
 	"goal": [
 		{
-			"reference": "#goal-3"
+			"reference": "#goal-4"
+		}
+	],
+	"activity": [
+		{
+			"detail": {
+				"kind": "Appointment",
+				"code": {
+					"coding": [
+						{
+							"system": "https://synapxe.sg/ValueSet/hsg-healthplan-activity-type",
+							"code": "recommended-next-check-in",
+							"display": "Recommended Next Check-in"
+						}
+					]
+				},
+				"status": "scheduled",
+				"scheduledTiming": {
+					"event": [
+						"2025-10"
+					]
+				}
+			}
 		}
 	]
 }
