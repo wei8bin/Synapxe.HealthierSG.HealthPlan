@@ -31,14 +31,16 @@ Copilot Prompt:
 Expressing a Mental Health Goal in FHIR, generate the goal 9 structure definition for the new goal resource profile with below goal measurement:
 
 REQUIREMENT:
-- Goal Measure 1, the practice duration range from 10 to 30 minutes.
+- Goal Measure GM016, the practice duration range from 10 to 30 minutes.
 Practice at least {10} minutes of guided meditation or deep breathing (morning and evening).
-- Goal Measure 2, the engage in physical activity duration range from 30 to 60 minutes.
+- Goal Measure GM017, the engage in physical activity duration range from 30 to 60 minutes.
 Engage in {30} minutes of physical activity (walking, yoga, or any preferred exercise).
-- Goal Measure 3, the screen time limit at 20 minutes before bed.
+- Goal Measure GM018, the screen time limit at 20 minutes before bed.
 Limit screen time at {20} mins before bed to enhance sleep quality.
+- The Goal Measure GM016, GM017, GM018 are part of the Goal 9.
 
 OUTCOME:
 1. Define the "G9" at CodeSystem https://synapxe.sg/ValueSet/hsg-health-goal
 2. Define the 3 new goal measure at CodeSystem https://synapxe.sg/ValueSet/hsg-goal-measure
 3. Generate Goal 9 structure definition file with slicing for the new goal measure.
+4. Generate a sample payload for the new goal resource profile.
