@@ -10,18 +10,6 @@
     "SearchConfiguration": {
       "BlockFilterlessSearch": true
     },
-    "OpenTelemetryPrometheusMetrics": {
-      "AspNetCoreInstrumentation": true,
-      "HttpClientInstrumentation": true,
-      "SqlClientInstrumentation": true,
-      "RuntimeInstrumentation": true
-    },
-    "OpenTelemetryTracing": {
-      "AspNetCoreInstrumentation": true,
-      "SqlClientInstrumentation": {
-        "SetDbStatementForText": true
-      }
-    },
     "Authentication": "Synapxe.HealthierSG.HealthPlan.Security.HeadersAuthenticationHandler",
     "ResourceRepositoryCache": {
       "GlobalExpiration": "01:00:00",

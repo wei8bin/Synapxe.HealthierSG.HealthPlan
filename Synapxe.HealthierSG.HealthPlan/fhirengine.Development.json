@@ -40,8 +40,8 @@
       "FhirDataStore<@NoSql>": {
         "UseSqlDocument": {
           "Migration": {
-            "DeployDatabase": false,
-            "CreateNewDatabase": false
+            "DeployDatabase": true,
+            "CreateNewDatabase": true
           }
         }
       }

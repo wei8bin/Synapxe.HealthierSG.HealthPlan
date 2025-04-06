@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Synapxe.HealthierSG.HealthPlan.AppHost\Synapxe.HealthierSG.HealthPlan.AppHost.csproj" />
     <ProjectReference Include="..\Synapxe.HealthierSG.HealthPlan\Synapxe.HealthierSG.HealthPlan.csproj" />
   </ItemGroup>
 
